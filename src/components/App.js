@@ -1,16 +1,49 @@
 import React, { Component } from 'react';
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      users: []
+    };
+  }
+
+  fetchData(url) {
+    fetch(url)
+        .then((response) => {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+
+            return response;
+        })
+        .then((response) => response.json())
+        .then((users) => this.setState({ users }))
+        .catch((e) => console.log(e))
+  }
+
+  componentDidMount() {
+    this.fetchData('/api/users');
+  }
+
   handleOnClick = (e) => {
     e.preventDefault();
     this.props.increment();
   };
+
+  renderUsers() {
+    if (this.state.users === null) {
+      return null;
+    }
+    return this.state.users.map(user => <li>{user.name} {user.surname}</li>);
+  }
   render() {
     return (
       <div>
-        <h1>{this.props.person.name}</h1>
-        <button onClick={this.handleOnClick}>+</button>
-        <h4>{this.props.person.counter}</h4>
+        <ul>
+          {this.renderUsers()}
+        </ul>
       </div>
     );
   }

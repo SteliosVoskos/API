@@ -7,7 +7,7 @@ var config = require('./webpack.config');
 var app = express();
 var compiler = webpack(config);
 
-const dataToSend = JSON.parse(fs.readFileSync('data.json'));
+var dataToSend = JSON.parse(fs.readFileSync('data.json'));
 
 app.use(require('webpack-dev-middleware')(compiler, {
   publicPath: config.output.publicPath

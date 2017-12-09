@@ -1,0 +1,86 @@
+{
+    "users": [
+        {
+            "id": "1000",
+            "name": "Stelios",
+            "surname": "Voskos"
+        },
+        {
+            "id": "1001",
+            "name": "UserB",
+            "surname": "Surname B"
+        },
+        {
+            "id": "1002",
+            "name": "UserC",
+            "surname": "Surname C"
+        },
+        {
+            "id": "1003",
+            "name": "UserD",
+            "surname": "Surname D"
+        }
+    ],
+    "comments": [
+        {
+            "userId": "1000",
+            "commentId": "1000A0",
+            "commentTitle": "Hello world",
+            "commentText": "The world is great",
+            "replies": 3
+        },
+        {
+            "userId": "1000",
+            "commentId": "1000A1",
+            "commentTitle": "Hello world",
+            "commentText": "My day is great",
+            "replies": 1
+        },
+        {
+            "userId": "1000",
+            "commentId": "1000A2",
+            "commentTitle": "Hello world",
+            "commentText": "Interesting day at work!"
+        },
+        {
+            "userId": "1002",
+            "commentId": "1000A3",
+            "commentTitle": "Hello world",
+            "commentText": "The future belongs to those who believe in their dreams"
+        },
+        {
+            "userId": "1002",
+            "commentId": "1000A4",
+            "commentTitle": "Hello world",
+            "commentText": ""
+        },
+        {
+            "userId": "1003",
+            "commentId": "1000A5",
+            "commentTitle": "Hello world",
+            "commentText": "The world is great"
+        }
+    ],
+    "repliesList": [
+        {
+            "commentId": "1000A0",
+            "replyId": "1234a",
+            "text": "Reply to the world is great" 
+        },
+        {
+            "commentId": "1000A0",
+            "replyId": "1234b",
+            "text": "I think you could do better" 
+        },
+        {
+            "commentId": "1000A0",
+            "replyId": "1234c",
+            "text": "The world has problems" 
+        },
+        {
+            "commentId": "1000A1",
+            "replyId": "1234d",
+            "text": "Have a good day mate :)" 
+        }
+    ]
+}

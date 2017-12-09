@@ -1,42 +1,23 @@
 import React, { Component } from 'react';
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      users: []
-    };
-  }
-
-  fetchData(url) {
-    fetch(url)
-        .then((response) => {
-            if (!response.ok) {
-                throw Error(response.statusText);
-            }
-
-            return response;
-        })
-        .then((response) => response.json())
-        .then((users) => this.setState({ users }))
-        .catch((e) => console.log(e))
-  }
-
   componentDidMount() {
-    this.fetchData('/api/users');
+    this.props.fetchUsers('/api/users');
   }
 
   renderUsers() {
-    if (this.state.users === null) {
+    if (!this.props.users || this.props.users === null) {
       return null;
     }
 
-    return this.state.users.map(user => <li>{user.name} {user.surname}</li>);
+    return this.props.users.map(user => <li>{user.name} {user.surname}</li>);
   }
+  
   render() {
     return (
       <div>
+        {this.props.isLoading && <div>Loading...</div>}
+        {this.props.isError && <div>Error</div>}
         <ul>
           {this.renderUsers()}
         </ul>

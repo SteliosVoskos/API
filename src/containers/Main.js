@@ -5,7 +5,9 @@ import App from '../components/App';
 
 function mapStateToProps(state) {
     return {
-        person: state.person
+        users: state.users.users,
+        isLoading: state.users.isLoading,
+        isError: state.users.isError
     }
 };
 

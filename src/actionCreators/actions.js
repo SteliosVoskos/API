@@ -17,3 +17,14 @@ export function fetchUsersError(error) {
         error
     }
 }
+
+export function fetchUsers(url) {
+    return (dispatch) => {
+        dispatch(fetchUsersPending());
+
+        fetch(url)
+        .then(response => response.json())
+        .then(users => dispatch(fetchUsersSuccess(users)))
+        .catch(error => dispatch(fetchUsersError(error)))
+    }
+}

@@ -27,15 +27,11 @@ export default class App extends Component {
     this.fetchData('/api/users');
   }
 
-  handleOnClick = (e) => {
-    e.preventDefault();
-    this.props.increment();
-  };
-
   renderUsers() {
     if (this.state.users === null) {
       return null;
     }
+
     return this.state.users.map(user => <li>{user.name} {user.surname}</li>);
   }
   render() {

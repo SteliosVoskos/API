@@ -6,13 +6,15 @@ export default class App extends Component {
   }
 
   renderUsers() {
-    if (!this.props.users || this.props.users === null) {
+    const { users } = this.props;
+    
+    if (!users || users === null) {
       return null;
     }
 
-    return this.props.users.map(user => <li>{user.name} {user.surname}</li>);
+    return users.map(user => <li>{user.name} {user.surname}</li>);
   }
-  
+
   render() {
     return (
       <div>

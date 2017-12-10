@@ -28,3 +28,45 @@ export function fetchUsers(url) {
         .catch(error => dispatch(fetchUsersError(error)))
     }
 }
+
+export function fetchCommentsPending() {
+    return {
+        type: 'FETCH_COMMENTS_PENDING'
+    }
+}
+
+export function fetchCommentsSuccess(data) {
+    return {
+        type: 'FETCH_COMMENTS_SUCCESS',
+        data
+    }
+}
+
+export function fetchCommentsError(error) {
+    return {
+        type: 'FETCH_COMMENTS_SUCCESS',
+        data
+    }
+}
+
+export function noCommentsForUser() {
+    return {
+        type: 'NO_COMMENTS_FOR_USER'
+    }
+}
+
+export function fetchCommentsForUser(id) {
+    return (dispatch) => {
+        dispatch(fetchCommentsPending());
+
+        fetch(url)
+        .then(response => response.json())
+        .then(comments => {
+            if (!comments.length) {
+                dispatch(noCommentsForUser());
+            }
+            dispatch(fetchCommentsSuccess(comments))
+        })
+        .catch(error => dispatch(fetchCommentsError(error)))
+    }
+}

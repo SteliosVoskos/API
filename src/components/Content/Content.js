@@ -23,10 +23,46 @@ export default class Content extends Component {
         return null;
     }
 
+    renderComments() {
+        const styles = {
+            container: {
+                display: 'flex',
+                flex: 1,
+                flexDirection: 'column',
+                border: '1px solid #EAE9E9',
+                padding: '16px',
+                width: '25%',
+                fontFamily: 'Helvetica',
+                height: 'auto',
+                personalDetails: {
+                    fontWeight: '500',
+                    fontSize: '16px'
+                },
+                postContent: {
+                    display: 'block',
+                    fontSize: '14px',
+                    fontWeight: '300',
+                    margin: '8px'
+                }
+            }
+        };
+        if (this.props.type === 'post') {
+            return (
+                <div style={styles.container}>
+                    <span style={styles.container.personalDetails}>Stelios Voskos</span>
+                    <span style={styles.container.postContent}>Hello world</span>
+                </div>
+            );
+        }
+
+        return null;
+    }
+
     render() {
         return (
             <div>
                 {this.renderUser()}
+                {this.renderComments()}
             </div>
         )
     }

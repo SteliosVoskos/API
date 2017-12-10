@@ -17,8 +17,12 @@ export default class App extends Component {
   }
 
   render() {
+    const styles = {
+      backgroundColor: '#FDFDFD'
+    };
+
     return (
-      <div>
+      <div style={styles}>
         {this.props.isLoading && <div>Loading...</div>}
         {this.props.isError && <div>Error</div>}
         {this.renderUsers()}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Content from './Content/Content';
 
 export default class App extends Component {
   componentDidMount() {
@@ -7,12 +8,12 @@ export default class App extends Component {
 
   renderUsers() {
     const { users } = this.props;
-    
+
     if (!users || users === null) {
       return null;
     }
 
-    return users.map(user => <li>{user.name} {user.surname}</li>);
+    return users.map(user => <Content type="user" {...user} />);
   }
 
   render() {
@@ -20,9 +21,7 @@ export default class App extends Component {
       <div>
         {this.props.isLoading && <div>Loading...</div>}
         {this.props.isError && <div>Error</div>}
-        <ul>
-          {this.renderUsers()}
-        </ul>
+        {this.renderUsers()}
       </div>
     );
   }

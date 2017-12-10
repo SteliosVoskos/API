@@ -11,9 +11,21 @@ export default class Content extends Component {
     };
 
     renderUser() {
+        const styles = {
+            padding: '16px',
+            margin: '8px',
+            border: '1px solid #EAE9E9',
+            borderRadius: '8px',
+            width: '30%',
+            height: 'auto',
+            backgroundColor: '#EFF9FF',
+            fontWeight: '300',
+            fontFamily: 'Helvetica',
+            fontSize: '16px'
+        }
         if (this.props.type === 'user') {
             return (
-                <div>
+                <div style={styles}>
                     <span>{this.props.name}</span>
                     <span>{this.props.surname}</span>
                 </div>

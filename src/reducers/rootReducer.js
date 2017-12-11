@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import person from './person';
 import users from './users';
+import comments from './comments';
 
 const rootReducer = combineReducers({
-    person,
+    comments,
     users
 });
 

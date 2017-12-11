@@ -7,7 +7,11 @@ function mapStateToProps(state) {
     return {
         users: state.users.users,
         isLoading: state.users.isLoading,
-        isError: state.users.isError
+        isError: state.users.isError,
+        comments: state.comments.comments,
+        areCommentsPending: state.comments.areCommentsPending,
+        areCommentsErroring: state.comments.areCommentsErroring,
+        isCommentsArrayEmpty: state.comments.isCommentsArrayEmpty
     }
 };
 

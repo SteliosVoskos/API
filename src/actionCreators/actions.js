@@ -45,7 +45,7 @@ export function fetchCommentsSuccess(data) {
 export function fetchCommentsError(error) {
     return {
         type: 'FETCH_COMMENTS_SUCCESS',
-        data
+        error
     }
 }
 
@@ -55,11 +55,11 @@ export function noCommentsForUser() {
     }
 }
 
-export function fetchCommentsForUser(id) {
+export function fetchCommentsForUser(url, id) {
     return (dispatch) => {
         dispatch(fetchCommentsPending());
 
-        fetch(url)
+        fetch(url+id)
         .then(response => response.json())
         .then(comments => {
             if (!comments.length) {

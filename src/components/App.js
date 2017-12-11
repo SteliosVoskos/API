@@ -6,6 +6,10 @@ export default class App extends Component {
     this.props.fetchUsers('/api/users');
   }
 
+  handleUserCommentsDisplay = (id) => {
+    this.props.fetchCommentsForUser('/api/users/comments/', id);
+  }
+
   renderUsers() {
     const { users } = this.props;
 
@@ -13,7 +17,16 @@ export default class App extends Component {
       return null;
     }
 
-    return users.map(user => <Content type="user" {...user} />);
+    return users.map(user => <Content key={user.id} type="user" {...user} onCommentsDisplayClick={() => this.handleUserCommentsDisplay(user.id)} />);
+  }
+
+  renderCommentsForUser() {
+    const { comments } = this.props;
+    
+    if (!comments || comments === null) {
+      return null;
+    }
+    return comments.map(comment => <Content type="post" key={comment.commentId} {...comment} />)
   }
 
   render() {
@@ -26,6 +39,7 @@ export default class App extends Component {
         {this.props.isLoading && <div>Loading...</div>}
         {this.props.isError && <div>Error</div>}
         {this.renderUsers()}
+        {this.props.isCommentsArrayEmpty ? <div>No comments!</div> : this.renderCommentsForUser()}
       </div>
     );
   }

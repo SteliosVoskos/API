@@ -10,6 +10,10 @@ export default class Content extends Component {
         commentText: ''
     };
 
+    handleClick = (e, id) => {
+        this.props.onCommentsDisplayClick(id);
+    }
+
     renderUser() {
         const styles = {
             padding: '16px',
@@ -25,7 +29,7 @@ export default class Content extends Component {
         }
         if (this.props.type === 'user') {
             return (
-                <div style={styles}>
+                <div style={styles} onClick={this.handleClick}>
                     <span>{this.props.name}</span>
                     <span>{this.props.surname}</span>
                 </div>
@@ -61,8 +65,8 @@ export default class Content extends Component {
         if (this.props.type === 'post') {
             return (
                 <div style={styles.container}>
-                    <span style={styles.container.personalDetails}>Stelios Voskos</span>
-                    <span style={styles.container.postContent}>Hello world</span>
+                    <span style={styles.container.personalDetails}>{this.props.commentTitle}</span>
+                    <span style={styles.container.postContent}>{this.props.commentText}</span>
                 </div>
             );
         }
